@@ -28,6 +28,9 @@ make seed
 ```
 Open `http://localhost:5173`, create an account, and use **Compare safe routes**. API docs: `http://localhost:8000/docs`.
 
+## Frontend–backend connection
+The React application calls the FastAPI service exclusively through `VITE_API_URL`; it never calls PostGIS, Redis, or third-party map/routing services from the browser. For local development, copy `frontend/.env.example` to `frontend/.env` and keep its localhost URL. For a hosted frontend, set `VITE_API_URL` in that platform's environment settings to the deployed backend's `/api/v1` URL. `VITE_` variables are public build-time values, so never put API keys, JWT secrets, SMTP credentials, or database URLs in them.
+
 ## Three-minute demo
 1. Register a traveller account and compare Demo Campus Gate to Metro Station.
 2. Contrast the **Fastest route (41)** with its unlit stretch against the **Recommended safest route (88)** with lamps, shops, and a nearby police booth.
